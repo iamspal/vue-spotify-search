@@ -11,7 +11,7 @@
 header {
   background: $primaryColor;
   color: white;
-  padding: 15px;
+  padding: 10px;
   h1 {
     margin: 0;
     @extend %font-size-h1;
