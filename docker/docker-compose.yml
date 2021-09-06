@@ -5,9 +5,8 @@ services:
     restart: always
     tty: true
     image: cypress/base:14.7.0
-    command: sh -c "cd /app/ && npm install -g @vue/cli && npm install && npm run serve"
     expose: [8080]
     ports:
       - '8080:8080'
     volumes:
-      - '.:/app/'
+      - '../:/app/'
