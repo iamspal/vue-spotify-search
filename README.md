@@ -22,7 +22,10 @@ npm run test:unit
 
 ## Project setup with Docker
 ```
+cd docker
 docker-compose up
+docker exec -it vue /bin/sh
+cd /app && bash install.sh && cd .. && npm run serve
 ```
 Once container is running go to http://localhost:8080
 
