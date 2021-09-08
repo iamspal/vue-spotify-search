@@ -3,7 +3,7 @@
     <div class="container">
       <div class="search-container">
         <InputField v-model="searchValue"
-                    @change="search"
+                    @input="search"
                     :style="getSearchInputBackgroundStyles()"
                     type="text"
                     aria-label="Search"
@@ -31,6 +31,8 @@
 
 <script>
 import { ref } from 'vue';
+import { useStore } from 'vuex';
+import SEARCH_CATALOG from '../store/modules/catalog/catalog.actions.types';
 import InputField from '../components/form/InputField.vue';
 import AlbumList from '../components/AlbumList.vue';
 import Tabs from '../components/ui/Tabs.vue';
@@ -44,19 +46,7 @@ export default {
     Tabs,
   },
   setup() {
-    // Search
-    const searchValue = ref('');
-
-    const search = () => {
-      console.log(searchValue.value);
-    };
-
-    const getSearchInputBackgroundStyles = () => ({
-      backgroundImage: `url(${magnifyingGlassIcon})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'left center',
-      backgroundPositionX: '16px',
-    });
+    const store = useStore();
 
     // Tabs
     const activeTab = ref('Albums');
@@ -78,6 +68,23 @@ export default {
     const updateActiveTab = (newActiveTab) => {
       activeTab.value = newActiveTab.name;
     };
+
+    // Search
+    const searchValue = ref('');
+
+    const search = async () => {
+      await store.dispatch(SEARCH_CATALOG, searchValue.value);
+      tabs.value[0].list = store.state.catalog.albums;
+      tabs.value[1].list = store.state.catalog.artists;
+      tabs.value[2].list = store.state.catalog.tracks;
+    };
+
+    const getSearchInputBackgroundStyles = () => ({
+      backgroundImage: `url(${magnifyingGlassIcon})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'left center',
+      backgroundPositionX: '16px',
+    });
 
     return {
       searchValue,
