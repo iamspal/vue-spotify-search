@@ -45,6 +45,8 @@ ul {
     img {
       width: 100%;
       border-radius: 10px;
+      object-fit: cover;
+      max-height: 266px;
     }
 
     p {
