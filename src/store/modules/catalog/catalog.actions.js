@@ -3,8 +3,8 @@ import { SET_ARTISTS, SET_TRACKS, SET_ALBUMS } from './catalog.mutations.types';
 import searchCatalog from './catalog.service';
 
 const actions = {
-  [SEARCH_CATALOG]({ commit }, query) {
-    const [error, catalog] = searchCatalog(query);
+  async [SEARCH_CATALOG]({ commit }, query) {
+    const [error, catalog] = await searchCatalog(query);
 
     if (error) {
       commit(SET_ARTISTS, []);

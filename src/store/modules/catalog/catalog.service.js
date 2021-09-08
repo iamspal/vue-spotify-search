@@ -1,6 +1,6 @@
 import fetchInstance from '../../fetchInstance';
 
-const baseUrl = process.env.APP_API_ENDPOINT;
+const baseUrl = process.env.VUE_APP_CATALOG_ENDPOINT;
 
 // Search tracks, artists, albums on spotify API
 const searchCatalog = async (query) => {
@@ -8,7 +8,8 @@ const searchCatalog = async (query) => {
   try {
     const response = await fetchInstance(url);
     if (!response.ok) throw await response.json();
-    return [null, await response.json()];
+    const json = await response.json();
+    return [null, json];
   } catch (error) {
     return [error];
   }
