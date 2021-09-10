@@ -7,10 +7,10 @@ const searchCatalog = async (query) => {
   const url = `${baseUrl}?q=${query}`;
   try {
     const response = await fetchInstance(url);
-    if (!response.ok) throw await response.json();
     const json = await response.json();
     return [null, json];
   } catch (error) {
+    console.log(error);
     return [error];
   }
 };
