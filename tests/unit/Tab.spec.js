@@ -6,7 +6,20 @@ describe('Tabs.vue', () => {
   beforeEach(() => {
     wrapper = shallowMount(Tabs, {
       props: {
-        tabs: ['Albums', 'Artists', 'Tracks'],
+        tabs: [
+          {
+            name: 'Albums',
+            list: [],
+          },
+          {
+            name: 'Artists',
+            list: [],
+          },
+          {
+            name: 'Tracks',
+            list: [],
+          },
+        ],
         activeTab: 'Albums',
       },
     });
@@ -26,7 +39,12 @@ describe('Tabs.vue', () => {
 
   it('Should show tab title correctly', async () => {
     await wrapper.setProps({
-      tabs: ['Albums'],
+      tabs: [
+        {
+          name: 'Albums',
+          list: [],
+        },
+      ],
     });
     expect(wrapper.text()).toEqual('Albums');
   });
