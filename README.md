@@ -20,19 +20,37 @@ npm run build
 npm run test:unit
 ```
 
+### Run E2E tests
+```
+npm run test:e2e
+```
+
 ## Project setup with Docker
 ```
 cd docker
 docker-compose up
 docker exec -it vue /bin/sh
-cd /app && bash install.sh && cd .. && npm run serve
+cd /app/docker && bash install.sh && cd .. && npm run serve
 ```
 Once container is running go to http://localhost:8080
 
-### Run tests
+### Run unit tests
 ```
 docker exec -it vue /bin/sh
 cd /app
 npm run test:unit
+```
+
+### Run e2e tests
+```
+docker exec -it vue /bin/sh
+cd /app
+npm run serve
+```
+
+Open new terminal and run: 
+```
+docker exec -it vue /bin/sh
+cd /app
 npm run test:e2e
 ```
