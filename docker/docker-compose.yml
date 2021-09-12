@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  vue:
+    container_name: vue
+    restart: always
+    tty: true
+    image: cypress/base:14.7.0
+    expose: [8080]
+    ports:
+      - '8080:8080'
+    volumes:
+      - '../:/app/'
