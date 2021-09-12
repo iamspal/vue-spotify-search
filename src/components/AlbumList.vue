@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <ul class="album-list">
       <li v-for="item in items"
           :key="item.id">
         <img :src="item.image" :alt="item.name" v-if="item.image"/>
