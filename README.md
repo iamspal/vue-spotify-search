@@ -1,5 +1,7 @@
 # Spotify Search App
 
+![Vue spotify](components.jpg?raw=true "Vue spotify")
+
 ## Project setup
 ```
 npm install -g @vue/cli
